@@ -41,5 +41,6 @@ namespace Business.Constants
         public static string RentalListed = "Kiralama işlemleri listelendi.";
 
         public static string ListedById = "Seçilen kriterlere göre listelendi.";
+        public static string CarImageLimitExceeded = "Resim Limiti aşıldı";
     }
 }
