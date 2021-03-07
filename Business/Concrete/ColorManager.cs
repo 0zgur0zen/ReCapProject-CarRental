@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -11,6 +12,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    [SecuredOperation("admin")]
     public class ColorManager : IColorService
     {
         IColorDal _colorDal;
