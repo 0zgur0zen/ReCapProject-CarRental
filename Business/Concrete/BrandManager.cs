@@ -13,7 +13,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [SecuredOperation("admin")]
+   
     public class BrandManager : IBrandService
     {
         IBrandDal _brandDal;
@@ -23,6 +23,7 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
         
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand brand)
         {

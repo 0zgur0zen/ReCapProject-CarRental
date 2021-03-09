@@ -16,7 +16,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [SecuredOperation("admin")]
+   
     public class CarImageManager : ICarImageService
     {
         ICarImageDal _carImageDal;
@@ -26,6 +26,7 @@ namespace Business.Concrete
             _carImageDal = carImageDal;
         }
        
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(IFormFile file,CarImage carImage)
         {

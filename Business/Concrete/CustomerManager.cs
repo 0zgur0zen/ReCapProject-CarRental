@@ -12,7 +12,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [SecuredOperation("admin")]
+   
     public class CustomerManager : ICustomerService
     {
         ICustomerDal _customerDal;
@@ -21,7 +21,8 @@ namespace Business.Concrete
         {
             _customerDal = customerDal;
         }
-
+        
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer customer)
         {         

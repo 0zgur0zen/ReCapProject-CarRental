@@ -13,7 +13,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [SecuredOperation("admin")]
+   
     public class UserManager : IUserService
     {
         IUserDal _userDal;
@@ -34,7 +34,8 @@ namespace Business.Concrete
             return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user));
 
         }
-
+      
+        [SecuredOperation("admin")]
         public IResult Add(User user)
         {
             _userDal.Add(user);

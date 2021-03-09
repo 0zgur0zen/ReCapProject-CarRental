@@ -12,7 +12,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [SecuredOperation("admin")]
+   
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
@@ -21,7 +21,8 @@ namespace Business.Concrete
         {
             _rentalDal = rentalDal;
         }
-
+       
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {

@@ -12,7 +12,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [SecuredOperation("admin")]
+   
     public class ColorManager : IColorService
     {
         IColorDal _colorDal;
@@ -21,7 +21,9 @@ namespace Business.Concrete
         {
             _colorDal = colorDal;
         }
-       [ValidationAspect(typeof(ColorValidator))]
+       
+        [SecuredOperation("admin")]
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color color)
         {
             _colorDal.Add(color);
