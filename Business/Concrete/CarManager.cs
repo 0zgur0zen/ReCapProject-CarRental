@@ -57,9 +57,9 @@ namespace Business.Concrete
         }
         
         [CacheAspect]
-        public IDataResult<List<Car>> GetAllCarsByBrandId(int brandId)
+        public IDataResult<List<CarDetailDto>> GetAllCarsByBrandId(int brandId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == brandId), Messages.ListedById);
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.BrandId == brandId), Messages.ListedById);
         }
       
         [CacheAspect]
@@ -76,9 +76,9 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<List<Car>> GetAllCarsByColorId(int colorId)
+        public IDataResult<List<CarDetailDto>> GetAllCarsByColorId(int colorId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId), Messages.ListedById);
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.ColorId == colorId), Messages.ListedById);
         }
         
         [CacheAspect]

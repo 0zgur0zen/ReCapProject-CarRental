@@ -6,22 +6,25 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.Entityframework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, ReCapProjectContext>, ICarDal
     {
-        public List<CarDetailDto> GetCarDetails()
+        public List<CarDetailDto> GetCarDetails(Expression<Func<CarDetailDto, bool>> filter = null)
         {
             using (ReCapProjectContext context=new ReCapProjectContext())
             {
-                var result = from c in context.Cars
-                             join b in context.Brands
-                             on c.BrandId equals b.Id
-                             join v in context.Colors
-                              on c.ColorId equals v.Id
-                             select new CarDetailDto { Id = c.Id, BrandName = b.BrandName, ColorName = v.ColorName, DailyPrice = c.DailyPrice };
-                return result.ToList();
+                var result = from ca in context.Cars
+                             join br in context.Brands
+                             on ca.BrandId equals br.Id
+                             join co in context.Colors
+                              on ca.ColorId equals co.Id
+                             select new CarDetailDto { Id = ca.Id,BrandId=br.Id,ColorId=co.Id, BrandName = br.BrandName, ColorName = co.ColorName, DailyPrice = ca.DailyPrice,
+                                 Description=ca.Description,ModelYear=ca.ModelYear };
+                return filter == null ? result.ToList()
+                                  : result.Where(filter).ToList();
             }
         }
     }

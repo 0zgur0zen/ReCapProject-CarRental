@@ -6,6 +6,7 @@ using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTO_s;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -45,6 +46,11 @@ namespace Business.Concrete
         public IDataResult<Rental> GetById(int Id)
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(p => p.Id == Id), Messages.ListedById);
+        }
+
+        public IDataResult<List<RentalDto>> GetRentalDetails()
+        {
+            return new SuccessDataResult<List<RentalDto>>(_rentalDal.GetRentalDetails());
         }
 
         public IResult Update(Rental rental)
