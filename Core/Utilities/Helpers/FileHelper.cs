@@ -11,6 +11,7 @@ namespace Core.Utilities.Helpers
     {
         public static string Add(IFormFile file)
         {
+            string path = Environment.CurrentDirectory + @"\wwwroot";
             var sourcepath = Path.GetTempFileName();
             if (file.Length > 0)
             {
@@ -20,19 +21,21 @@ namespace Core.Utilities.Helpers
                 }
             }
             var result = newPath(file);
-            File.Move(sourcepath, result);
+            File.Move(sourcepath, path+result);
             return result;
         }
         public static void Delete(string path)
         {
-            File.Delete(path);
+            string localPath = Environment.CurrentDirectory + @"\wwwroot";
+            File.Delete(localPath+path);
         }
         public static string Update(string sourcePath, IFormFile file)
         {
             var result = newPath(file);
+            string path = Environment.CurrentDirectory + @"\wwwroot";
             if (sourcePath.Length > 0)
             {
-                using (var stream = new FileStream(result, FileMode.Create))
+                using (var stream = new FileStream(path+result, FileMode.Create))
                 {
                     file.CopyTo(stream);
                 }
@@ -45,10 +48,10 @@ namespace Core.Utilities.Helpers
             FileInfo ff = new FileInfo(file.FileName);
             string fileExtension = ff.Extension;
 
-            string path = Environment.CurrentDirectory + @"\Images\carImages";
+            
             var newPath = Guid.NewGuid().ToString() + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Year + fileExtension;
 
-            string result = $@"{path}\{newPath}";
+            string result = @"\Images\carImages\"+ newPath;
             return result;
         }
 
