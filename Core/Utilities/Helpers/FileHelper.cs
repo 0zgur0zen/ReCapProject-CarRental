@@ -40,7 +40,7 @@ namespace Core.Utilities.Helpers
                     file.CopyTo(stream);
                 }
             }
-            File.Delete(sourcePath);
+            Delete(sourcePath);
             return result;
         }
         public static string newPath(IFormFile file)

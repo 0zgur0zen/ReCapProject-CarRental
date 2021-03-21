@@ -17,12 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Images\carImages\1442903c-2c39-4a5e-afc7-84aa66d678e3_2_28_2021.jpg" />
     <None Include="wwwroot\Images\carImages\47139e8b-0523-4a05-b9c5-4db0004eec53_2_28_2021.jpg" />
     <None Include="wwwroot\Images\carImages\702a4674-76e5-4342-8984-951f5e740c1a_2_28_2021.jpg" />
-    <None Include="wwwroot\Images\carImages\aa8467bb-6368-4101-a8da-00c6b27521a4_2_28_2021.jpg" />
-    <None Include="wwwroot\Images\carImages\e5912b18-637f-47cb-9d7a-05e606e548dc_2_28_2021.jpg" />
-    <None Include="wwwroot\Images\carImages\ec39f97a-d58b-4d80-9afa-52a112362c23_2_28_2021.jpg" />
     <None Include="wwwroot\Images\carImages\logo.jpg" />
   </ItemGroup>
 

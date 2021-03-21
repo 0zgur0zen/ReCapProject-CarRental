@@ -26,8 +26,8 @@ namespace Business.Concrete
             _carImageDal = carImageDal;
         }
        
-        //[SecuredOperation("admin")]
-      //  [ValidationAspect(typeof(CarImageValidator))]
+       // [SecuredOperation("admin")]
+        //[ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(IFormFile file,CarImage carImage)
         {
             IResult result = BusinessRules.Run(CheckImageLimitExceeded(carImage.CarId));
@@ -92,12 +92,12 @@ namespace Business.Concrete
         private List<CarImage> CheckIfCarImageNull(int Id)
         {
             string path = @"\Images\logo.jpg";
-            var result = _carImageDal.GetAll(c => c.CarId == Id).Any();
-            if (!result)
+            var result = _carImageDal.GetAll(c => c.CarId == Id);
+            if (result.Count==0)
             {
                 return new List<CarImage> { new CarImage { CarId = Id, ImagePath = path, Date = DateTime.Now } };
             }
-            return _carImageDal.GetAll(p => p.CarId == Id);
+            return result;
         }
 
     }
